@@ -1,12 +1,78 @@
-.settings-open.settings {
-    transform: none;
+html {
+   box-sizing: border-box;
+ }
+ *, *:before, *:after {
+   box-sizing: inherit;
+ }
+ 
+ html{
+   height: 100%;
+   min-height: 100vh;
+   margin: 0;
+   font-size: 100%;  
+ }
+ 
+ @media (min-width: 36em){
+   /*576 px*/
+  body {
+     font-size: 130%;
+   }
  }
 
-.settings {
-    display: flex;
-    flex-direction: row;
-    align-content: center;
+body{
+   position: relative;
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-attachment: fixed;
+   background-position: center; 
+   font-family: Helvetica, 'Segoe UI', Tahoma, Arial sans-serif;
+   color: white;
+   line-height: 1.2;
+   text-shadow: 0 0 25px rgba(0, 0, 0, 0.3);  
+}
+.focus-input{
+   width: 100%;
+   background: none;
+   border: none;
+   border-bottom: 3px solid white;
+   padding: 0.5em;
+   font-size: 180%;
+   color: white;
+   text-align: center;
  }
+ 
+ @media (min-width: 533px){
+   .focus-input {
+     width: auto;
+     padding: 0 1em;
+   }
+ }
+ 
+ .focus-input:focus{
+   outline: none;
+   border: none;
+   border-bottom : 2px solid white;
+ }
+ 
+ #container{
+   width: 100%;
+   margin-top: 5%;
+   padding: 1em 1em 0.5em;
+   text-align: center;
+ }
+
+
+.settings {
+	display: flex;
+	flex-direction: row;
+	align-content: center;
+   transform: none;
+}
+
+.settings-open.settings {
+	transform: translateX(-100%);
+	transition: transform 1s;
+}
 
  input {
     padding: 5px;
@@ -15,16 +81,117 @@
     height: 20px;
  }
  
- button {
-    height: 30px;
-    width: 70px;
-    background: none; /* This removes the default background */
-    color: #313131;
-    border: 1px solid #313131;
-    border-radius: 50px; /* This gives our button rounded edges */
-    font-size: 12px;
-    cursor: pointer;
- }
  form {
     padding-top: 20px;
+ }
+
+ .greeting-container {
+   padding: 50px; 
+   padding-left: 150px; 
+   display: flex;
+   justify-content: center;
+   align-content: center;
+}
+.greeting {
+   font-family: sans-serif;
+   font-size: 60px;
+   color: #fff;
+}
+body {
+   background-color: #c670ca;
+   background-image: linear-gradient(45deg, #c670ca 0%, #25a5c8 52%, #20e275 90%);
+}
+html {
+   height: 100%;
+}
+ 
+.wrapper{
+   position: relative;
+   width: 100%;
+   height: 100%;
+ }
+ @media (min-width: 780px){
+   .wrapper {
+     width: 600px;
+     display: grid;
+     grid-template-columns: repeat(2, [col] calc(100%/2) );
+     grid-auto-rows: 120px;
+     margin: 30px auto 40px;
+   }
+ }
+ 
+ button{
+   font-family: 'Ubuntu', sans-serif;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   
+   width: 170px;
+   height: 40px;
+   line-height: 1;
+   font-size: 18px;
+   font-weight: bold;
+   letter-spacing: 1px;
+   border: 3px solid #8C82FC;
+   background: #fff;
+   color: #8C82FC;
+   border-radius: 40px;
+   cursor: pointer;
+   overflow: hidden;
+   transition: all .35s;
+ }
+ 
+ button:hover{
+   background: #8C82FC;
+   color: #fff;
+ }
+ 
+ button span{
+   opacity: 1;
+   visibility: visible;
+   transition: all .35s;
+ }
+ 
+ .success{
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: #fff;
+   border-radius: 50%;
+   z-index: 1;
+   opacity: 0;
+   visibility: hidden;
+   transition: all .35s;
+ }
+ 
+ .success svg{
+   width: 20px;
+   height: 20px;
+   fill: yellowgreen;
+   transform-origin: 50% 50%;
+   transform: translateY(-50%) rotate(0deg) scale(0);
+   transition: all .35s;
+ }
+ 
+ button.is_active{
+   width: 40px;
+   height: 40px;
+ }
+ 
+ button.is_active .success{
+   opacity: 1;
+   visibility: visible;
+ }
+ 
+ button.is_active .success svg{
+   margin-top: 50%;
+   transform: translateY(-50%) rotate(720deg) scale(1);
+ }
+ 
+ button.is_active span{
+   opacity: 0;
+   visibility: hidden;
  }

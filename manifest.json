@@ -19,11 +19,6 @@
 
   "default_locale": "en",
 
-  "background": {
-    "page": "src/bg/background.html",
-    "persistent": true
-  },
-
   "chrome_url_overrides": {
     "newtab": "src/override/override.html"
   },
