@@ -91,18 +91,22 @@ document.addEventListener('DOMContentLoaded', function () {
 		document.getElementById("answer").value= "test"+sentiment;
 		
 		const url = 'https://newsapi.org/v2/everything?q='+string+'&from='+yesterday+'&to='+today+'&sortBy=relevancy&language=en&pageSize=100&apiKey=ef950cdea10e4b31a640905503ce0f7f'
-		document.getElementById("test2").innerHTML=url
+	
 		
 		fetch(url)
 			.then((resp) => resp.json())
 			//.then(response => document.getElementById("answer").value= JSON.stringify(response))
-			.then(response => response['articles'][0]['title'])
-			.then(response => document.getElementById("answer").innerHTML= JSON.stringify(response))
+			.then(response => analyze(response))
 			//.then(function(data) {document.getElementById("answer").value= "ok"})
 			//for (var i = 0; i < result.d.length; i++) { 
 			//  alert(result.d[i].employeename);}
 			.catch(document.getElementById("answer").innerHTML= 'error')
 		//(resp) => resp.json())
 		
+		function analyze(response){
+		document.getElementById("answer").innerHTML= JSON.stringify(response['articles'][0]['title'])
+		document.getElementById("test2").innerHTML= JSON.stringify(response['articles'][0]['url'])
+		//document.getElementsByTagName('body')[0].innerHTML += '<a href="'+JSON.stringify(response['articles'][0]['url']+'">'+JSON.stringify(response['articles'][0]['title']+'</a>'
+		}
 		//sentiment=positive
 		}
