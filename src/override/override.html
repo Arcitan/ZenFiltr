@@ -16,12 +16,18 @@ Filtr
 	<div id="container">
 		
 
-			<h2 id="mainFocus" class="goal">What are you interested in reading about?</h2>
-			<input class="focus-input" type="text" autofocus="autofocus"/>
+			<h2 id="mainFocus" class="goal">What topic would you like to read about today?</h2>
+			<form id="focus-form">
+					<input id="focus-input", class="focus-input" type="text" autofocus="autofocus"/>
+			</form>
+			
 
+			<h2 id="mainFocus" class="goal">Give me something...</h2>
 			<div class="wrapper">
-					<button class="mood-button">
-					  <span>Uplifting</span>
+
+
+					<button id="uplifting-button", class="uplifting-button" onclick="sendUplifting()">
+					  <span>Uplifting.</span>
 					  <div class="success">
 					  <svg xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"  viewBox="0 0 29.756 29.756" style="enable-background:new 0 0 29.756 29.756;" xml:space="preserve">
 						
@@ -30,8 +36,8 @@ Filtr
 						</div>
 					</button>
 
-					<button class="mood-button">
-							<span>Controversial</span>
+					<button id="controversial-button", class="controversial-button" onclick="sendControversial()">
+							<span>Controversial.</span>
 							<div class="success">
 							<svg xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"  viewBox="0 0 29.756 29.756" style="enable-background:new 0 0 29.756 29.756;" xml:space="preserve">
 							  
@@ -40,8 +46,17 @@ Filtr
 							  </div>
 					</button>
 			</div>
-
 	</div><!--end #container-->
+
+	<div id="results">
+			<p id="answer"></p>
+			<p id="test2"></p>
+	</div>
+	
+	
+	
+
+
 
 	<script src="main.js"></script>
 </body>

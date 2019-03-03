@@ -8,7 +8,7 @@
   "incognito": "split",
 
   "description": "!",
-
+  
   "homepage_url": "http://hack.rice.edu",
 
   "icons": {
@@ -25,6 +25,7 @@
 
   "permissions": [
     "management", 
-    "activeTab"
+    "activeTab",
+    "nativeMessaging"
   ]
 }

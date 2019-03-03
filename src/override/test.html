@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<script>
+
+
+function run(sentiment){
+
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth() + 1; //January is 0!
+var yyyy = today.getFullYear();
+if (dd < 10) {dd = '0' + dd;}
+if (mm < 10) { mm = '0' + mm;}
+today = yyyy+'-'+ mm + '-' + dd;
+
+var yesterday = new Date();
+yesterday.setDate(yesterday.getDate() - 1);
+var dd = yesterday.getDate();
+var mm = yesterday.getMonth() + 1; //January is 0!
+var yyyy = yesterday.getFullYear();
+if (dd < 10) {dd = '0' + dd;}
+if (mm < 10) { mm = '0' + mm;}
+yesterday = yyyy+'-'+ mm + '-' + dd;
+
+var string;
+string=document.getElementById("first").value;
+document.getElementById("answer").value= "test"+sentiment;
+
+const url = 'https://newsapi.org/v2/everything?q='+string+'&from='+yesterday+'&to='+today+'&sortBy=relevancy&language=en&pageSize=100&apiKey=ef950cdea10e4b31a640905503ce0f7f'
+
+document.getElementById("test1").value=string
+document.getElementById("test2").value=url
+
+fetch(url)
+  .then((resp) => resp.json())
+  //.then(response => document.getElementById("answer").value= JSON.stringify(response))
+  .then(response => response['articles'][0]['title'])
+  .then(response => document.getElementById("answer").value= JSON.stringify(response))
+  //.then(function(data) {document.getElementById("answer").value= "ok"})
+  //for (var i = 0; i < result.d.length; i++) { 
+  //  alert(result.d[i].employeename);}
+  .catch(document.getElementById("answer").value= 'error')
+//(resp) => resp.json())
+
+//sentiment=positive
+}
+</script>
+</head>
+<body>
+Enter the Search Strings : <input id="first">
+<button onclick="run('negative')">Negative</button>
+<button onclick="run('positive')">Positive</button>
+<input id="answer">
+<input id="test1">
+<input id="test2">
+</body>
+</html>
